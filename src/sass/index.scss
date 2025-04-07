@@ -1,12 +1,19 @@
-$fondo1: #dddfdf;
-$fondo2: #d0c4df;
+$fondo1: #f7eeff;
+$fondo2: #dacee7;
+$fondo3: #ddf7ff;
 $texto: #4f517d;
 $item1: #280003;
 $item2: #704385;
+$item3: #b598d8;
+
+body {
+  overflow-x: hidden;
+  background: $fondo1;
+}
 
 * {
   margin: 0;
-  block-size: border;
+  box-sizing: border-box;
   color: $texto;
   font-family: "Roboto", sans-serif;
 }
@@ -101,6 +108,7 @@ header {
 
 .acerca-de-mi {
   display: flex;
+  align-items: center;
   background: $fondo2;
   width: min(1500px, 90%);
   border-radius: 10px;
@@ -136,13 +144,409 @@ header {
   .herramientas {
     display: flex;
     gap: 10px;
-
-    img {
-      width: 250px;
+    .herramienta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       flex: 1;
-      background-size: cover;
+      img {
+        width: 250px;
+        background-size: cover;
+      }
+      .niveles {
+        margin: 5px 0;
+        display: flex;
+        width: 125px;
+        height: 35px;
+        border-radius: 10px;
+        border: $fondo2 5px solid;
+        background-color: $item3;
+        .nivel {
+          flex: 1;
+          margin: 2px;
+          border-radius: 5px;
+        }
+        .nivel.none {
+          background: none;
+        }
+        .nivel-1 {
+          background: #98fbda;
+        }
+        .nivel-2 {
+          background: #98fba0;
+        }
+        .nivel-3 {
+          background: #fbf998;
+        }
+        .nivel-4 {
+          background: #fb9898;
+        }
+        .nivel-5 {
+          background: #dc98fb;
+        }
+      }
+      .nivel-texto {
+        margin-top: 5px;
+        font-size: 20px;
+        color: $fondo1;
+      }
+      .nivel-descripcion {
+        color: $fondo1;
+      }
     }
   }
+}
+
+.cargos-container {
+  padding: 75px 0;
+  background: $fondo3;
+}
+
+.titulo-desempeno {
+  -webkit-text-stroke: 1px $item3;
+  font-family: "Lilita One";
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: $fondo1;
+}
+
+$tag-width: 120px;
+$tag-height: 38px;
+
+.tag-cloud-container {
+  width: min(90%, 600px);
+  height: 300px;
+  background: repeating-linear-gradient(
+    45deg,
+    $fondo2,
+    $fondo2 30px,
+    $fondo1 30px,
+    $fondo1 60px
+  );
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 10px 10px $item3;
+}
+
+.tag-cloud {
+  position: relative;
+  margin-top: 10px;
+  margin-left: 10px;
+  width: calc(100% - $tag-width - 20px);
+  height: calc(100% - $tag-height - 20px);
+}
+
+.tag-wrapper {
+  height: $tag-height;
+  width: $tag-width;
+  text-align: center;
+  position: absolute;
+  cursor: pointer;
+}
+
+$tag-colors: #6c5ce7, #7781d8, #9d81c9, #444baf, #b597fc, #4154fd, #6960a8,
+  #5560fa;
+
+.tag {
+  background: white;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 18px;
+  font-weight: 500;
+  position: relative;
+  z-index: 10;
+  transition: transform 0.3s ease;
+}
+
+.tag:hover {
+  transform: scale(1.1);
+}
+
+@mixin colored-content($color) {
+  background: $color;
+  color: white;
+}
+
+@for $i from 1 through calc(length($tag-colors)) {
+  .tag-wrapper:nth-child(8n + #{$i}) {
+    .tag {
+      @include colored-content(nth($tag-colors, $i));
+    }
+  }
+}
+
+.tooltip {
+  position: absolute;
+  top: $tag-height + 10px;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  background: $item1;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 11;
+  &::after {
+    content: "";
+    position: absolute;
+    height: 6px;
+    top: -19px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-bottom-color: $item1;
+  }
+}
+
+.tag:hover + .tooltip {
+  opacity: 1;
+}
+
+.comentario-desempeno {
+  margin-top: 12px;
+  span {
+    font-weight: bold;
+    color: $item2;
+  }
+}
+
+.solo-movil {
+  display: inline;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.solo-pc {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: inline;
+  }
+}
+
+.proyectos-container {
+  padding: 0;
+  display: grid;
+  height: 800px;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+  transition: grid-template 0.3s ease;
+  .tipo-proyecto {
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    h2 {
+      position: absolute;
+      user-select: none;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    h2.mostrar {
+      opacity: 1;
+    }
+    h2.no-mostrar {
+      opacity: 0;
+    }
+    .proyectos-mostrar {
+      opacity: 1 !important;
+    }
+    .proyectos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      .proyecto {
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        img {
+          user-select: none;
+          height: 80%;
+          padding: 0 20px;
+          background-size: cover;
+        }
+      }
+    }
+  }
+  .tipo-proyecto:hover {
+    h2 {
+      transform: scale(1.2);
+    }
+  }
+}
+
+$colorProyecto1A: #b8fcff;
+$colorProyecto1B: #45aaf7;
+$colorProyecto1C: #0066b4;
+$colorProyecto2A: #f6b8ff;
+$colorProyecto2B: #fc98c1;
+$colorProyecto2C: #d45fbb;
+$colorProyecto2D: #690d55;
+$colorProyecto3A: #cdb8ff;
+$colorProyecto3B: #a78ee0;
+$colorProyecto3C: #2d1d3f;
+$colorProyecto4A: #b8ffbe;
+$colorProyecto4B: #29d2c2;
+$colorProyecto4C: #003821;
+
+.tipo-proyecto:nth-child(4n + 1) {
+  h2,
+  h3 {
+    color: $colorProyecto1C;
+  }
+  background-color: $colorProyecto1A;
+  opacity: 0.8;
+  background: radial-gradient(
+      circle,
+      transparent 20%,
+      $colorProyecto1A 20%,
+      $colorProyecto1A 80%,
+      transparent 80%,
+      transparent
+    ),
+    radial-gradient(
+        circle,
+        transparent 20%,
+        $colorProyecto1A 20%,
+        $colorProyecto1A 80%,
+        transparent 80%,
+        transparent
+      )
+      25px 25px,
+    linear-gradient($colorProyecto1B 2px, transparent 2px) 0 -1px,
+    linear-gradient(90deg, $colorProyecto1B 2px, $colorProyecto1A 2px) -1px 0;
+  background-size: 50px 50px, 50px 50px, 25px 25px, 25px 25px;
+}
+
+.tipo-proyecto:nth-child(4n + 2) {
+  h2,
+  h3 {
+    color: $colorProyecto2D;
+  }
+  background-color: $colorProyecto2A;
+  opacity: 0.8;
+  background: linear-gradient(135deg, $colorProyecto2C 25%, transparent 25%) -40px
+      0/ 80px 80px,
+    linear-gradient(225deg, $colorProyecto2B 25%, transparent 25%) -40px 0/ 80px
+      80px,
+    linear-gradient(315deg, $colorProyecto2C 25%, transparent 25%) 0px 0/ 80px 80px,
+    linear-gradient(45deg, $colorProyecto2B 25%, $colorProyecto2A 25%) 0px 0/ 80px
+      80px;
+}
+
+.tipo-proyecto:nth-child(4n + 3) {
+  h2,
+  h3 {
+    color: $colorProyecto3C;
+  }
+  background-color: #d4b8ff;
+  opacity: 0.8;
+  background-image: linear-gradient(
+      30deg,
+      $colorProyecto3A 12%,
+      transparent 12.5%,
+      transparent 87%,
+      $colorProyecto3A 87.5%,
+      $colorProyecto3A
+    ),
+    linear-gradient(
+      150deg,
+      $colorProyecto3A 12%,
+      transparent 12.5%,
+      transparent 87%,
+      $colorProyecto3A 87.5%,
+      $colorProyecto3A
+    ),
+    linear-gradient(
+      30deg,
+      $colorProyecto3A 12%,
+      transparent 12.5%,
+      transparent 87%,
+      $colorProyecto3A 87.5%,
+      $colorProyecto3A
+    ),
+    linear-gradient(
+      150deg,
+      $colorProyecto3A 12%,
+      transparent 12.5%,
+      transparent 87%,
+      $colorProyecto3A 87.5%,
+      $colorProyecto3A
+    ),
+    linear-gradient(
+      60deg,
+      $colorProyecto3B 25%,
+      transparent 25.5%,
+      transparent 75%,
+      $colorProyecto3B 75%,
+      $colorProyecto3B
+    ),
+    linear-gradient(
+      60deg,
+      $colorProyecto3B 25%,
+      transparent 25.5%,
+      transparent 75%,
+      $colorProyecto3B 75%,
+      $colorProyecto3B
+    );
+  background-size: 80px 140px;
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+}
+
+.tipo-proyecto:nth-child(4n + 4) {
+  h2,
+  h3 {
+    color: $colorProyecto4C;
+  }
+  background-color: $colorProyecto4A;
+  opacity: 0.8;
+  background-image: radial-gradient(
+      circle at center center,
+      $colorProyecto4B,
+      $colorProyecto4A
+    ),
+    repeating-radial-gradient(
+      circle at center center,
+      $colorProyecto4B,
+      $colorProyecto4B,
+      17px,
+      transparent 34px,
+      transparent 17px
+    );
+  background-blend-mode: multiply;
+}
+
+.proyectos-1 {
+  grid-template-columns: 80% 20%;
+  grid-template-rows: 80% 20%;
+}
+
+.proyectos-2 {
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 80% 20%;
+}
+
+.proyectos-3 {
+  grid-template-columns: 80% 20%;
+  grid-template-rows: 20% 80%;
+}
+
+.proyectos-4 {
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 20% 80%;
 }
 
 footer {
