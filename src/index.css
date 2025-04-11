@@ -131,7 +131,7 @@ header div h5 {
     font-size: 3.5rem;
   }
   .herramientas-container .herramientas {
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
   }
 }
