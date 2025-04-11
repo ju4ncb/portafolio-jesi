@@ -10,7 +10,7 @@ import latamVerticalImage from "./assets/latam-vertical.jpg";
 import revistaV1Image from "./assets/REVISTA-V-1.png";
 import revistaV2Image from "./assets/REVISTA-V-2.png";
 import camisaImage from "./assets/camisa-innovacion.png";
-import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { Dribbble, Instagram, Linkedin, Mail, Phone } from "lucide-react";
 import Herramienta from "./components/Herramienta";
 import TagCloud from "./components/TagCloud";
 import Proyectos from "./components/Proyectos";
@@ -194,16 +194,28 @@ function App() {
         </div>
       </Container>
       <footer>
-        <p>Jessica Santos</p>
-        <div>
-          <a href="#">
-            <Facebook />
+        <p className="name">Jessica Santos</p>
+        <div className="contact">
+          <div className="column">
+            <Phone />
+            <p>+57 300 374 5115</p>
+          </div>
+          <div className="column">
+            <Mail />
+            <p>jessloren0613@gmail.com</p>
+          </div>
+        </div>
+        <div className="media">
+          <a>
+            <Dribbble className="in-process" />
+            <span className="tooltip">En desarrollo</span>
           </a>
-          <a href="#">
+          <a href="https://www.instagram.com/jess.ohx">
             <Instagram />
           </a>
-          <a href="#">
-            <Linkedin />
+          <a>
+            <Linkedin className="in-process" />
+            <span className="tooltip">En desarrollo</span>
           </a>
         </div>
       </footer>
