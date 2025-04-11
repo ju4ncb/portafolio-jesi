@@ -772,9 +772,11 @@ footer {
       }
       .tooltip {
         background: $fondo1;
+        text-align: center;
         color: $item1;
         top: $a-height + 10px;
-        left: $a-height / 2;
+        left: calc($a-height / 2);
+        width: 100px;
         &::after {
           border-bottom-color: $fondo1;
         }

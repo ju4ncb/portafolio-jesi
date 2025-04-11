@@ -587,9 +587,11 @@ footer .media a svg {
 }
 footer .media a .tooltip {
   background: #f7eeff;
+  text-align: center;
   color: #280003;
   top: 34px;
   left: 12px;
+  width: 100px;
 }
 footer .media a .tooltip::after {
   border-bottom-color: #f7eeff;
