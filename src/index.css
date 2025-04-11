@@ -221,7 +221,7 @@ header div h5 {
     height: calc(100% - 30px - 20px);
   }
   .tooltip {
-    max-width: 80px;
+    width: 80px;
     top: 40px;
   }
 }
@@ -242,7 +242,7 @@ header div h5 {
     height: calc(100% - 38px - 20px);
   }
   .tooltip {
-    max-width: 140px;
+    width: 140px;
     top: 48px;
   }
 }
@@ -255,7 +255,6 @@ header div h5 {
 
 .tag-cloud-container {
   width: min(90%, 600px);
-  overflow: hidden;
   height: 300px;
   background: repeating-linear-gradient(45deg, #dacee7, #dacee7 30px, #f7eeff 30px, #f7eeff 60px);
   border-radius: 16px;
