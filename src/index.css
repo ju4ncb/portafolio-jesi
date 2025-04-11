@@ -221,6 +221,7 @@ header div h5 {
     height: calc(100% - 30px - 20px);
   }
   .tooltip {
+    max-width: 80px;
     top: 40px;
   }
 }
@@ -241,6 +242,7 @@ header div h5 {
     height: calc(100% - 38px - 20px);
   }
   .tooltip {
+    max-width: 140px;
     top: 48px;
   }
 }
@@ -329,8 +331,10 @@ header div h5 {
 .tooltip {
   position: absolute;
   transform: translateX(-50%);
-  white-space: nowrap;
   background: #280003;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   color: #fff;
   padding: 6px 10px;
   border-radius: 4px;

@@ -306,6 +306,7 @@ header {
     height: calc(100% - $tag-height - 20px);
   }
   .tooltip {
+    max-width: $tag-width + 20px;
     top: $tag-height + 10px;
   }
 }
@@ -329,6 +330,7 @@ header {
     height: calc(100% - $tag-height - 20px);
   }
   .tooltip {
+    max-width: $tag-width + 20px;
     top: $tag-height + 10px;
   }
 }
@@ -400,8 +402,10 @@ $tag-colors: #6c5ce7, #7781d8, #9d81c9, #444baf, #b597fc, #4154fd, #6960a8,
 .tooltip {
   position: absolute;
   transform: translateX(-50%);
-  white-space: nowrap;
   background: $item1;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   color: #fff;
   padding: 6px 10px;
   border-radius: 4px;
