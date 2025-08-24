@@ -254,14 +254,20 @@ function Home() {
           <div className="creditos-destacados">
             <p className="name destacado">
               🎨 Diseñado por{" "}
-              <a href="https://www.linkedin.com/in/jessica-santos-531370362/">
+              <a
+                href="https://www.linkedin.com/in/jessica-santos-531370362/"
+                target="_blank"
+              >
                 Jessica Santos
               </a>{" "}
               con Figma
             </p>
             <p className="name destacado">
               💻 Desarrollado por{" "}
-              <a href="https:/github.com/ju4ncb">Juan Caballero</a> con React
+              <a href="https://github.com/ju4ncb" target="_blank">
+                Juan Caballero
+              </a>{" "}
+              con React
             </p>
           </div>
         </div>
