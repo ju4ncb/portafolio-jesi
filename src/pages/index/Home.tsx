@@ -107,7 +107,7 @@ function Home() {
         <div className="acerca-de-mi">
           <div className="text-container">
             <h1>Acerca de mi</h1>
-            <p>¡Hola! soy Jessica Santos, soy estudiante de Diseño Gráfico.</p>
+            <p>¡Hola! soy Jessica Santos, estudiante de Diseño Gráfico.</p>
             <p>
               En este portafolio está todos las actividades que he realizado
               tanto académicamente como personalmente, cada uno de estos refleja
