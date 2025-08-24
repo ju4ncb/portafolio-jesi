@@ -24,7 +24,6 @@ const Herramienta = ({ nivel, src, alt }: HerramientaProps) => {
   return (
     <div className="herramienta">
       <img src={src} alt={alt} />
-      <p className="nivel-texto">Nivel</p>
       <div className="niveles">
         {nivelesMap.map((x, index) => (
           <div
@@ -37,7 +36,10 @@ const Herramienta = ({ nivel, src, alt }: HerramientaProps) => {
           />
         ))}
       </div>
-      <p className="nivel-descripcion">{nivelesDescripcionMap[nivel]}</p>
+      <div className="texto">
+        <p className="nivel-texto">Nivel:</p>
+        <p className="nivel-descripcion">{nivelesDescripcionMap[nivel]}</p>
+      </div>
     </div>
   );
 };

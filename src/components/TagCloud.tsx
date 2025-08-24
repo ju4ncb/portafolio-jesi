@@ -1,8 +1,14 @@
 import { motion } from "framer-motion";
+import { LucideProps } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 interface TagCloudProps {
-  roles: string[];
+  roles: {
+    role: string;
+    RoleIcon: React.ForwardRefExoticComponent<
+      Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>
+    >;
+  }[];
 }
 
 type Position = { top: number; left: number; width: number; height: number };
@@ -60,7 +66,7 @@ const TagCloud = ({ roles }: TagCloudProps) => {
   return (
     <div className="tag-cloud-container">
       <div className="tag-cloud" ref={containerRef}>
-        {roles.map((role, i) => {
+        {roles.map(({ role, RoleIcon }, i) => {
           const pos = positions[i];
           if (!pos) return null;
           return (
@@ -72,7 +78,9 @@ const TagCloud = ({ roles }: TagCloudProps) => {
               className="tag-wrapper"
               style={{ top: `${pos.top}%`, left: `${pos.left}%` }}
             >
-              <div className="tag">{role.split(" ")[0]}</div>
+              <div className="tag">
+                <RoleIcon />
+              </div>
               <span className="tooltip">{role}</span>
             </motion.div>
           );
