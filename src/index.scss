@@ -575,6 +575,7 @@ $tag-colors: #7632f5, #8d4cd6, #7544c4, #4c31ac, #8d5cff, #7a41ff, #5b3aa8,
 .proyectos-wrapper {
   padding: 0;
   display: grid;
+  width: 100%;
   transition: grid-template 0.3s ease;
   .tipo-proyecto {
     display: flex;
