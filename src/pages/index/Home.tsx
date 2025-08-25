@@ -1,5 +1,5 @@
 import Container from "../../components/Container";
-import artesGraficas from "../../assets/artes-graficas.jpg";
+import jessDrawing from "../../assets/jess-drawing.png";
 import inDesignImage from "../../assets/indesign.png";
 import photoshopImage from "../../assets/photoshop.png";
 import illustratorImage from "../../assets/illustrator.png";
@@ -111,11 +111,11 @@ function Home() {
             <p>
               En este portafolio está todos las actividades que he realizado
               tanto académicamente como personalmente, cada uno de estos refleja
-              tantos mis habilidades, mi pensamiento visual, estilo y emocióna
-              la hora de crear un nuevo diseño.
+              tantos mis habilidades, mi pensamiento visual, estilo y emoción la
+              hora de crear un nuevo diseño.
             </p>
           </div>
-          <img src={artesGraficas} alt="Imagen about me" />
+          <img src={jessDrawing} alt="Imagen about me" />
         </div>
       </Container>
       <Container classNames="herramientas-container">
