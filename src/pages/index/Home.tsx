@@ -111,8 +111,8 @@ function Home() {
             <p>
               En este portafolio está todos las actividades que he realizado
               tanto académicamente como personalmente, cada uno de estos refleja
-              tantos mis habilidades, mi pensamiento visual, estilo y emoción la
-              hora de crear un nuevo diseño.
+              tantos mis habilidades, mi pensamiento visual, estilo y emoción a
+              la hora de crear un nuevo diseño.
             </p>
           </div>
           <img src={jessDrawing} alt="Imagen about me" />
