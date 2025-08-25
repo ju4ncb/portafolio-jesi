@@ -11,7 +11,8 @@ import latamHorizontalImage from "../../assets/latam-horizontal.jpg";
 import latamVerticalImage from "../../assets/latam-vertical.jpg";
 import revistaV1Image from "../../assets/REVISTA-V-1.png";
 import revistaV2Image from "../../assets/REVISTA-V-2.png";
-import camisaImage from "../../assets/camisa-innovacion.png";
+import estampado1Image from "../../assets/estampado-1.jpg";
+import estampado2Image from "../../assets/estampado-2.png";
 import {
   Dribbble,
   CheckCircle,
@@ -90,8 +91,13 @@ function Home() {
   const proyectosCamisas = [
     {
       imagenAlt: "camisa",
-      imagenSrc: camisaImage,
-      titulo: "Estampado Camisa Innovación",
+      imagenSrc: estampado1Image,
+      titulo: "Estampado Camisa 1",
+    },
+    {
+      imagenAlt: "camisa",
+      imagenSrc: estampado2Image,
+      titulo: "Estampado Camisa 2",
     },
   ] as ProyectoTipo[];
   const [proyectosActivo, setProyectosActivo] = useState(0);
@@ -103,10 +109,10 @@ function Home() {
           <h5>Jessica Santos | Diseñadora gráfica</h5>
         </div>
       </header>
-      <Container>
-        <div className="acerca-de-mi">
-          <div className="text-container">
-            <h1>Acerca de mi</h1>
+      <Container withFloatingContainer marginTop75>
+        <div className="about-me-wrapper">
+          <div className="text-about-me">
+            <h1 className="titulo">Acerca de mi</h1>
             <p>¡Hola! soy Jessica Santos, estudiante de Diseño Gráfico.</p>
             <p>
               En este portafolio está todos las actividades que he realizado
@@ -115,11 +121,15 @@ function Home() {
               la hora de crear un nuevo diseño.
             </p>
           </div>
-          <img src={jessDrawing} alt="Imagen about me" />
+          <img
+            src={jessDrawing}
+            alt="Imagen about me"
+            className="imagen-about-me"
+          />
         </div>
       </Container>
-      <Container classNames="herramientas-container">
-        <h1>Herramientas</h1>
+      <Container withFloatingContainer>
+        <h1 className="titulo">Herramientas</h1>
         <div className="herramientas">
           <Herramienta src={figmaImage} alt="Figma" nivel={2} />
           <Herramienta src={illustratorImage} alt="Illustrator" nivel={5} />
@@ -128,8 +138,8 @@ function Home() {
           <Herramienta src={canvaImage} alt="Canvas" nivel={4} />
         </div>
       </Container>
-      <Container classNames="cargos-container">
-        <h1 className="titulo-desempeno">Áreas de desempeño</h1>
+      <Container withFloatingContainer>
+        <h1 className="titulo">Áreas de desempeño</h1>
         <TagCloud roles={roles} />
         <p className="comentario-desempeno">
           <span className="solo-movil">
@@ -140,84 +150,86 @@ function Home() {
           </span>
         </p>
       </Container>
-      <Container
-        classNames={
-          proyectosActivo !== 0
-            ? `proyectos-container proyectos-${proyectosActivo}`
-            : "proyectos-container"
-        }
-      >
+      <Container noMargin>
         <div
-          className="tipo-proyecto"
-          onClick={() => {
-            if (proyectosActivo !== 1) {
-              setProyectosActivo(1);
-            } else {
-              setProyectosActivo(0);
-            }
-          }}
+          className={
+            proyectosActivo !== 0
+              ? `proyectos-wrapper proyectos-${proyectosActivo}`
+              : "proyectos-wrapper"
+          }
         >
-          <h2 className={proyectosActivo !== 1 ? "mostrar" : "no-mostrar"}>
-            Folletos
-          </h2>
-          <Proyectos
-            proyectos={proyectosFolletos}
-            mostrar={proyectosActivo === 1}
-          />
-        </div>
-        <div
-          className="tipo-proyecto"
-          onClick={() => {
-            if (proyectosActivo !== 2) {
-              setProyectosActivo(2);
-            } else {
-              setProyectosActivo(0);
-            }
-          }}
-        >
-          <h2 className={proyectosActivo !== 2 ? "mostrar" : "no-mostrar"}>
-            Revistas
-          </h2>
-          <Proyectos
-            proyectos={proyectosRevistas}
-            mostrar={proyectosActivo === 2}
-          />
-        </div>
-        <div
-          className="tipo-proyecto"
-          onClick={() => {
-            if (proyectosActivo !== 3) {
-              setProyectosActivo(3);
-            } else {
-              setProyectosActivo(0);
-            }
-          }}
-        >
-          <h2 className={proyectosActivo !== 3 ? "mostrar" : "no-mostrar"}>
-            Banners
-          </h2>
-          <Proyectos
-            proyectos={proyectosBanners}
-            mostrar={proyectosActivo === 3}
-          />
-        </div>
-        <div
-          className="tipo-proyecto"
-          onClick={() => {
-            if (proyectosActivo !== 4) {
-              setProyectosActivo(4);
-            } else {
-              setProyectosActivo(0);
-            }
-          }}
-        >
-          <h2 className={proyectosActivo !== 4 ? "mostrar" : "no-mostrar"}>
-            Estampados
-          </h2>
-          <Proyectos
-            proyectos={proyectosCamisas}
-            mostrar={proyectosActivo === 4}
-          />
+          <div
+            className="tipo-proyecto"
+            onClick={() => {
+              if (proyectosActivo !== 1) {
+                setProyectosActivo(1);
+              } else {
+                setProyectosActivo(0);
+              }
+            }}
+          >
+            <h2 className={proyectosActivo !== 1 ? "mostrar" : "no-mostrar"}>
+              Folletos
+            </h2>
+            <Proyectos
+              proyectos={proyectosFolletos}
+              mostrar={proyectosActivo === 1}
+            />
+          </div>
+          <div
+            className="tipo-proyecto"
+            onClick={() => {
+              if (proyectosActivo !== 2) {
+                setProyectosActivo(2);
+              } else {
+                setProyectosActivo(0);
+              }
+            }}
+          >
+            <h2 className={proyectosActivo !== 2 ? "mostrar" : "no-mostrar"}>
+              Revistas
+            </h2>
+            <Proyectos
+              proyectos={proyectosRevistas}
+              mostrar={proyectosActivo === 2}
+            />
+          </div>
+          <div
+            className="tipo-proyecto"
+            onClick={() => {
+              if (proyectosActivo !== 3) {
+                setProyectosActivo(3);
+              } else {
+                setProyectosActivo(0);
+              }
+            }}
+          >
+            <h2 className={proyectosActivo !== 3 ? "mostrar" : "no-mostrar"}>
+              Banners
+            </h2>
+            <Proyectos
+              proyectos={proyectosBanners}
+              mostrar={proyectosActivo === 3}
+            />
+          </div>
+          <div
+            className="tipo-proyecto"
+            onClick={() => {
+              if (proyectosActivo !== 4) {
+                setProyectosActivo(4);
+              } else {
+                setProyectosActivo(0);
+              }
+            }}
+          >
+            <h2 className={proyectosActivo !== 4 ? "mostrar" : "no-mostrar"}>
+              Estampados
+            </h2>
+            <Proyectos
+              proyectos={proyectosCamisas}
+              mostrar={proyectosActivo === 4}
+            />
+          </div>
         </div>
       </Container>
       <footer>
